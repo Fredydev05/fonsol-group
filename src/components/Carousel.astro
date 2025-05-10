@@ -4,7 +4,7 @@ import { products } from "@/types/Products";
 import Aurora from "@/components/animations/Aurora";
 ---
 
-<section class="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden border-t-2 border-white/50" id="productos">
+<section class="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden border-t-2 border-white" id="productos">
   <Aurora
     client:load
     className="absolute inset-0 z-0"
@@ -13,7 +13,7 @@ import Aurora from "@/components/animations/Aurora";
     amplitude={1.0}
     speed={0.5}
   />
-  <h1 class="text-3xl md:text-6xl text-white font-semibold mb-12 md:my-12 z-10">Nuestros productos</h1>
+  <h1 class="text-3xl md:text-6xl text-white font-semibold my-12 z-10">Nuestros productos</h1>
   <ProductCarousel client:load products={products} />
 </section>
 

@@ -1,139 +1,121 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 /**
  * @typedef {{ image: string; title: string; link: string }} Product
  * @param {{ products: Product[] }} props
  */
 const ProductCarousel = ({ products }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [offsetX, setOffsetX] = useState(0);
-  const [startX, setStartX] = useState(0);
-  const [dragging, setDragging] = useState(false);
-
   const containerRef = useRef(null);
   const pauseRef = useRef(false);
-  const timeoutRef = useRef(null);
+  const pauseTimeoutRef = useRef(null);
+  const scrollEndTimeoutRef = useRef(null);
 
-  const itemWidth = 300;
-  const gap = 16;
+  const itemWidth = 316; // 300px width + 16px gap
 
-  // Autoplay
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (!pauseRef.current && !dragging) {
-        setCurrentIndex((prev) => (prev + 1) % products.length);
-      }
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [products.length, dragging]);
+  // Recentrar la card más cercana al centro
+  const snapToNearest = () => {
+    const el = containerRef.current;
+    if (!el) return;
 
-  const pauseAutoplay = () => {
-    pauseRef.current = true;
-    clearTimeout(timeoutRef.current);
-    timeoutRef.current = setTimeout(() => {
-      pauseRef.current = false;
-    }, 5000);
+    const scrollLeft = el.scrollLeft;
+    const index = Math.round(scrollLeft / itemWidth);
+    const targetScroll = index * itemWidth;
+
+    el.scrollTo({ left: targetScroll, behavior: "smooth" });
   };
 
-  const handleStart = (e) => {
-    const x = e.touches ? e.touches[0].clientX : e.clientX;
-    setStartX(x);
-    setDragging(true);
-    pauseAutoplay();
-  };
-
-  const handleMove = (e) => {
-    if (!dragging) return;
-    const x = e.touches ? e.touches[0].clientX : e.clientX;
-    setOffsetX(x - startX);
-  };
-
-  const handleEnd = () => {
-    if (!dragging) return;
-    const threshold = 50;
-
-    if (offsetX > threshold && currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
-    } else if (offsetX < -threshold && currentIndex < products.length - 1) {
-      setCurrentIndex(currentIndex + 1);
-    }
-
-    setDragging(false);
-    setOffsetX(0);
-  };
-
+  // Scroll automático
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
 
-    // Mobile
-    el.addEventListener("touchstart", handleStart, { passive: true });
-    el.addEventListener("touchmove", handleMove, { passive: true });
-    el.addEventListener("touchend", handleEnd);
+    const scrollStep = itemWidth;
 
-    // Mouse
-    el.addEventListener("mousedown", handleStart);
-    el.addEventListener("mousemove", handleMove);
-    el.addEventListener("mouseup", handleEnd);
-    el.addEventListener("mouseleave", handleEnd);
+    const interval = setInterval(() => {
+      if (pauseRef.current) return;
+
+      const maxScroll = el.scrollWidth - el.clientWidth;
+
+      if (el.scrollLeft + scrollStep >= maxScroll - 1) {
+        el.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        el.scrollBy({ left: scrollStep, behavior: "smooth" });
+      }
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // Manejo de scroll manual
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const onScroll = () => {
+      pauseRef.current = true;
+
+      clearTimeout(pauseTimeoutRef.current);
+      clearTimeout(scrollEndTimeoutRef.current);
+
+      // Reanudar autoplay en 5s
+      pauseTimeoutRef.current = setTimeout(() => {
+        pauseRef.current = false;
+      }, 5000);
+
+      // Snap automático si el usuario dejó de hacer scroll por 150ms
+      scrollEndTimeoutRef.current = setTimeout(() => {
+        snapToNearest();
+      }, 150);
+    };
+
+    el.addEventListener("scroll", onScroll, { passive: true });
 
     return () => {
-      el.removeEventListener("touchstart", handleStart);
-      el.removeEventListener("touchmove", handleMove);
-      el.removeEventListener("touchend", handleEnd);
-      el.removeEventListener("mousedown", handleStart);
-      el.removeEventListener("mousemove", handleMove);
-      el.removeEventListener("mouseup", handleEnd);
-      el.removeEventListener("mouseleave", handleEnd);
+      el.removeEventListener("scroll", onScroll);
+      clearTimeout(pauseTimeoutRef.current);
+      clearTimeout(scrollEndTimeoutRef.current);
     };
-  }, [dragging, offsetX, currentIndex]);
-
-  const translateX =
-    -(itemWidth + gap) * currentIndex + (dragging ? offsetX : 0);
+  }, []);
 
   return (
-    <div className="relative overflow-hidden w-full max-w-screen-xl mx-auto px-4">
-      <div className="w-full overflow-hidden">
-        <div
-          ref={containerRef}
-          className={`flex gap-4 select-none transition-transform ${
-            dragging ? "" : "duration-500 ease-in-out"
-          }`}
-          style={{
-            transform: `translateX(${translateX}px)`,
-            touchAction: "pan-y",
-            cursor: dragging ? "grabbing" : "grab",
-          }}
-        >
-          {products.map((product, i) => (
-            <div
-              key={i}
-              className="w-[300px] flex-shrink-0 bg-white rounded-lg shadow p-4 h-auto pb-6"
-            >
-              <img
-                draggable={false}
-                src={product.image}
-                alt={product.title}
-                className="w-full h-[300px] object-contain"
-              />
-              <div className="mb-6">
-                <h3 className="text-xl font-semibold text-[#262626]">
-                  {product.title}
-                </h3>
-                <small className="text-[#606060] text-sm">
-                  Material inoxidable 304
-                </small>
-              </div>
-              <div className="text-white bg-[#25D366] p-2 px-4 rounded-xl hover:brightness-75 transition w-fit flex items-center gap-2">
-                <iconify-icon
-                  icon="ic:round-whatsapp"
-                  class="text-xl"
-                ></iconify-icon>
-                <a href={product.link}>Cotizar</a>
-              </div>
+    <div className="relative w-full max-w-screen-xl mx-auto px-4 overflow-hidden">
+      <div
+        ref={containerRef}
+        className="flex gap-4 overflow-x-auto scroll-smooth no-scrollbar pb-4"
+        style={{
+          WebkitOverflowScrolling: "touch",
+          scrollSnapType: "x mandatory",
+        }}
+      >
+        {products.map((product, i) => (
+          <div
+            key={i}
+            className="w-[300px] flex-shrink-0 bg-white rounded-lg shadow p-4 h-auto pb-6 scrollSnapAlign"
+            style={{ scrollSnapAlign: "center" }}
+          >
+            <img
+              draggable={false}
+              src={product.image}
+              alt={product.title}
+              className="w-full h-[300px] object-contain"
+            />
+            <div className="mb-6">
+              <h3 className="text-xl font-semibold text-[#262626]">
+                {product.title}
+              </h3>
+              <small className="text-[#606060] text-sm">
+                Material inoxidable 304
+              </small>
             </div>
-          ))}
-        </div>
+            <div className="text-white bg-[#25D366] p-2 px-4 rounded-xl hover:brightness-75 transition w-fit flex items-center gap-2">
+              <iconify-icon
+                icon="ic:round-whatsapp"
+                class="text-xl"
+              ></iconify-icon>
+              <a href={product.link}>Cotizar</a>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
