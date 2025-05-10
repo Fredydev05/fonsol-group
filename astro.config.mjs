@@ -1,9 +1,8 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
-import tailwindcss from '@tailwindcss/vite';
-import path from 'path';
-
-import react from '@astrojs/react';
+import { defineConfig } from "astro/config";
+import tailwindcss from "@tailwindcss/vite";
+import path from "path";
+import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,14 +10,14 @@ export default defineConfig({
     plugins: [tailwindcss()],
     resolve: {
       alias: {
-        '@': path.resolve('./src'), // ✅ Esto está bien ubicado
+        "@": path.resolve("./src"), // ✅ Esto está bien ubicado
       },
-  },
+    },
   },
 
   devToolbar: {
-  enabled: false
-},
-
-  integrations: [react()]
+    enabled: false,
+  },
+  integrations: [react()],
+  output: "static",
 });
