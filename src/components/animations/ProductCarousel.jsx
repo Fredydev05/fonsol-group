@@ -6,27 +6,26 @@ import { useEffect, useRef, useState } from "react";
  */
 const ProductCarousel = ({ products }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
+  const [offsetX, setOffsetX] = useState(0);
   const [startX, setStartX] = useState(0);
-  const [dragDistance, setDragDistance] = useState(0);
-  const [isTouching, setIsTouching] = useState(false);
+  const [dragging, setDragging] = useState(false);
 
+  const containerRef = useRef(null);
   const pauseRef = useRef(false);
   const timeoutRef = useRef(null);
-  const trackRef = useRef(null);
 
   const itemWidth = 300;
   const gap = 16;
 
-  // Autoplay con pausa
+  // Autoplay
   useEffect(() => {
     const interval = setInterval(() => {
-      if (!pauseRef.current && !isDragging && !isTouching) {
+      if (!pauseRef.current && !dragging) {
         setCurrentIndex((prev) => (prev + 1) % products.length);
       }
     }, 3000);
     return () => clearInterval(interval);
-  }, [products.length, isDragging, isTouching]);
+  }, [products.length, dragging]);
 
   const pauseAutoplay = () => {
     pauseRef.current = true;
@@ -36,42 +35,43 @@ const ProductCarousel = ({ products }) => {
     }, 5000);
   };
 
-  // Swipe unificado para touch y mouse
   const handleStart = (e) => {
-    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    setStartX(clientX);
-    setIsDragging(true);
-    setIsTouching(!!e.touches);
+    const x = e.touches ? e.touches[0].clientX : e.clientX;
+    setStartX(x);
+    setDragging(true);
     pauseAutoplay();
   };
 
   const handleMove = (e) => {
-    if (!isDragging) return;
-    const currentX = e.touches ? e.touches[0].clientX : e.clientX;
-    setDragDistance(currentX - startX);
+    if (!dragging) return;
+    const x = e.touches ? e.touches[0].clientX : e.clientX;
+    setOffsetX(x - startX);
   };
 
   const handleEnd = () => {
-    if (!isDragging) return;
+    if (!dragging) return;
+    const threshold = 50;
 
-    if (dragDistance > 50 && currentIndex > 0) {
-      setCurrentIndex((prev) => prev - 1);
-    } else if (dragDistance < -50 && currentIndex < products.length - 1) {
-      setCurrentIndex((prev) => prev + 1);
+    if (offsetX > threshold && currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+    } else if (offsetX < -threshold && currentIndex < products.length - 1) {
+      setCurrentIndex(currentIndex + 1);
     }
 
-    setIsDragging(false);
-    setIsTouching(false);
-    setDragDistance(0);
+    setDragging(false);
+    setOffsetX(0);
   };
 
   useEffect(() => {
-    const el = trackRef.current;
+    const el = containerRef.current;
     if (!el) return;
 
+    // Mobile
     el.addEventListener("touchstart", handleStart, { passive: true });
     el.addEventListener("touchmove", handleMove, { passive: true });
     el.addEventListener("touchend", handleEnd);
+
+    // Mouse
     el.addEventListener("mousedown", handleStart);
     el.addEventListener("mousemove", handleMove);
     el.addEventListener("mouseup", handleEnd);
@@ -86,23 +86,23 @@ const ProductCarousel = ({ products }) => {
       el.removeEventListener("mouseup", handleEnd);
       el.removeEventListener("mouseleave", handleEnd);
     };
-  }, [currentIndex, dragDistance, isDragging]);
+  }, [dragging, offsetX, currentIndex]);
 
   const translateX =
-    -(itemWidth + gap) * currentIndex + (isDragging ? dragDistance : 0);
+    -(itemWidth + gap) * currentIndex + (dragging ? offsetX : 0);
 
   return (
     <div className="relative overflow-hidden w-full max-w-screen-xl mx-auto px-4">
       <div className="w-full overflow-hidden">
         <div
-          ref={trackRef}
+          ref={containerRef}
           className={`flex gap-4 select-none transition-transform ${
-            isDragging ? "" : "duration-500 ease-in-out"
+            dragging ? "" : "duration-500 ease-in-out"
           }`}
           style={{
             transform: `translateX(${translateX}px)`,
             touchAction: "pan-y",
-            cursor: isDragging ? "grabbing" : "grab",
+            cursor: dragging ? "grabbing" : "grab",
           }}
         >
           {products.map((product, i) => (
