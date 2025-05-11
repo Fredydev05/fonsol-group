@@ -1,3 +1,5 @@
+import animations from '@midudev/tailwind-animations'
+
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,ts,tsx}'],
   theme: {
@@ -9,5 +11,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [ animations],
 };

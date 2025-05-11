@@ -1,19 +1,14 @@
 ---
-import GradientText from "@/components/animations/GradientText";
+import Image from "astro/components/Image.astro";
+import momentaneo from "public/momentaneo.png";
+import SplitText from "@/components/animations/SplitText";
 ---
-
 <section
-  class="flex flex-col items-center justify-between w-full md:min-h-screen md:flex-row mt-8 md:mt-0 gap-8"
+  class=" flex flex-col items-center justify-center w-full md:min-h-screen md:flex-row py-8 md:py-0 gap-8 mask-b-from-70% mask-b-to-95% 2xl:w-[90%] 2xl:mx-auto"
 >
-  <div class="flex flex-col justify-center md:w-1/2 ml-8 mr-8 md:mr-0 mb-4 md:mb-12">
-    <GradientText
-      colors={["#833AB4", "#BE2C6A", "#FD1D1D", "#FD6631", "#FCB045"]}
-      animationSpeed={3}
-      showBorder={false}
-      className="custom-class text-2xl md:text-4xl mb-14 font-bold"
-    >
-      Bienvenido a Fonsol Group
-    </GradientText>
+  <div
+    class="flex flex-col justify-center md:w-1/2 ml-8 mr-8 md:mr-0 mb-4 md:mb-12 my-8"
+  >
     <!-- <div class="flex flex-col justify-center md:w-1/2 ml-8 mr-8 md:mr-0">
       <TextPressure
         client:load
@@ -33,26 +28,34 @@ import GradientText from "@/components/animations/GradientText";
         minFontSize={20}
       />
     </div> -->
-    <h1
-      class="text-4xl md:text-6xl xl:text-7xl font-semibold text-gray-800 dark:text-white"
+    <SplitText
+      client:load
+      text="Elegancia y resistencia en tu Cocina!"
+      className="text-4xl md:text-6xl xl:text-7xl font-semibold text-gray-800 dark:text-white"
+      delay={60}
+      animationFrom={{ opacity: 0, transform: "translate3d(0,50px,0)" }}
+      animationTo={{ opacity: 1, transform: "translate3d(0,0,0)" }}
+      easing="easeOutCubic"
+      threshold={0.2}
+      rootMargin="-50px"
+    />
+    <p class="text-black text-sm mt-4 md:text-xl">
+      Contamos con envios a todo el pais
+    </p>
+    <div
+      class="mt-6 px-4 md:px-6 py-3 text-sm max-w-fit text-white bg-emerald-500 rounded-md hover:bg-emerald-700 transition justify-center items-center flex gap-1"
     >
-      Elegancia y resistencia en tu Cocina!
-    </h1>
-    <p class="text-white text-sm mt-4 md:text-xl">Contamos con envios a todo el pais</p>
-    <a
-      href="#productos"
-      class="mt-6 px-6 py-3 max-w-fit text-white bg-[#262626] rounded-md hover:bg-emerald-700 transition"
-    >
-      Ver Productos
-    </a>
+      <a href="#productos"> Ver Productos </a>
+      <iconify-icon icon="mingcute:down-line" class="text-white text-xl"
+      ></iconify-icon>
+    </div>
   </div>
 
-  <div class="w-fit md:h-screen">
-    <img
-      src="/momentaneo.png"
+  <div class="md:h-screen flex justify-center 2xl:w-1/2">
+    <Image
+      src={momentaneo}
       alt="Hero Image"
-      class="object-cover size-full mask-b-from-50% mask-b-to-90% opacity-80"
-      loading="lazy"
+      class="object-cover"
     />
   </div>
 </section>

@@ -78,7 +78,7 @@ const ProductCarousel = ({ products }) => {
   }, []);
 
   return (
-    <div className="relative w-full max-w-screen-xl mx-auto px-4 overflow-hidden">
+    <div className="relative w-full max-w-screen-xl 2xl:max-w-screen-2xl mx-auto px-4 overflow-hidden">
       <div
         ref={containerRef}
         className="flex gap-4 overflow-x-auto scroll-smooth no-scrollbar pb-4"
