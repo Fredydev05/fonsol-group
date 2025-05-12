@@ -112,7 +112,7 @@ const ProductCarousel = ({ products }) => {
                 icon="ic:round-whatsapp"
                 class="text-xl"
               ></iconify-icon>
-              <a href={product.link}>Cotizar</a>
+              <a href={`https://wa.me/595984439436?text=Hola!%20me%20interesaria%20cotizar%20el%20${encodeURIComponent(product.title)}`} target="_blank">Cotizar</a>
             </div>
           </div>
         ))}
