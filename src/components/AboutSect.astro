@@ -1,0 +1,39 @@
+---
+import Image from "astro/components/Image.astro";
+import logo from "/public/img/logoFONSOL.png";
+---
+
+<section
+  class="h-screen flex flex-col justify-center items-center md:mt-16"
+>
+  <h1 class="text-white text-2xl md:text-6xl 2xl:text-7xl font-semibold md:mb-14 hidden md:block">
+    Sobre Nosotros
+  </h1>
+  <div class="flex flex-col md:flex-row justify-between">
+    <div class="md:w1/2 flex justify-center items-center">
+      <Image class="w-[50%] md:w-[60%] 2xl:w-[70%]" src={logo} alt="Logo" />
+    </div>
+    <h1 class="text-white text-3xl md:text-6xl font-semibold mb-10 text-center md:hidden">
+    Sobre Nosotros
+  </h1>
+    <div class="text-white md:w-1/2 p-4 h-full flex flex-col justify-between ml-6 mr-4 2xl:mr-18">
+      <div>
+        <h1 class="text-2xl md:text-4xl 2xl:text-5xl font-medium mb-2">Misión</h1>
+        <p class="text-sm md:text-lg 2xl:text-2xl mb-10">
+          Nos dedicamos a la venta exclusiva de las Bachas para la cocina,
+          pensados para decorar el espacio que la mayor parte pasamos y ofrecer
+          la mejor tecnológica y comodidad.
+        </p>
+      </div>
+      <div class="mb-12">
+        <h1 class="text-2xl md:text-4xl 2xl:text-5xl font-medium mb-2">Visión</h1>
+        <p class="text-sm md:text-lg 2xl:text-2xl">
+          El objetivo primordial es ofrecer productos que superen las
+          expectativas y de este modo satisfacer de la forma más idónea las
+          necesidades de los consumidores, manteniendo precios razonables para
+          más satisfacción.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
