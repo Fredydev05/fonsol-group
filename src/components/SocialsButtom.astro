@@ -1,0 +1,106 @@
+<div class="fixed end-6 bottom-6 group z-50">
+  <div
+    id="speed-dial-menu-click"
+    class="flex flex-col items-center mb-4 space-y-2 opacity-0 scale-90 transition-all duration-300 pointer-events-none translate-y-5"
+  >
+    <!-- Facebook -->
+    <a
+      href="https://instagram.com"
+      type="button"
+      class="flex justify-center items-center w-[52px] h-[52px] text-white hover:text-gray-300 bg-white rounded-full dark:hover:text-white shadow-xs dark:bg-[#4267B2] dark:hover:brightness-70 focus:ring-4 focus:ring-gray-300 focus:outline-none dark:focus:ring-gray-400"
+    >
+      <iconify-icon icon="mdi:facebook" class="text-4xl text-white"></iconify-icon>
+      <span class="sr-only">Facebook</span>
+    </a>
+
+    <!-- Instagram -->
+    <a
+      href="https://instagram.com"
+      type="button"
+      class="flex justify-center items-center w-[52px] h-[52px] text-white hover:text-gray-300 bg-white rounded-full dark:hover:text-white shadow-xs dark:bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] dark:hover:brightness-70 focus:ring-4 focus:ring-gray-300 focus:outline-none dark:focus:ring-gray-400"
+    >
+      <iconify-icon icon="mdi:instagram" class="text-3xl text-white"></iconify-icon>
+      <span class="sr-only">Instagram</span>
+    </a>
+
+    <!-- WhatsApp -->
+    <a
+      href="https://instagram.com"
+      type="button"
+      class="flex justify-center items-center w-[52px] h-[52px] text-white hover:text-gray-300 bg-white rounded-full dark:hover:text-white shadow-xs dark:bg-[#25D366] dark:hover:bg-[#25D366]/60 focus:ring-4 focus:ring-gray-300 focus:outline-none dark:focus:ring-gray-400"
+    >
+      <iconify-icon icon="ic:round-whatsapp" class="text-3xl text-white"></iconify-icon>
+      <span class="sr-only">WhatsApp</span>
+    </a>
+  </div>
+
+  <!-- Botón principal -->
+  <button
+    type="button"
+    id="speed-dial-button"
+    aria-controls="speed-dial-menu-click"
+    aria-expanded="false"
+    class="flex items-center justify-center text-white bg-emerald-700 rounded-full w-14 h-14 dark:bg-emerald-600 focus:outline-none "
+  >
+    <svg
+  id="speed-dial-icon"
+  class="w-5 h-5 transition-transform duration-300"
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  viewBox="0 0 18 18"
+>
+  <path
+    id="line-1"
+    stroke="currentColor"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="2"
+    d="M9 1v16"
+    class="transition-transform duration-300 origin-center"
+  />
+  <path
+    id="line-2"
+    stroke="currentColor"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="2"
+    d="M1 9h16"
+    class="transition-transform duration-300 origin-center"
+  />
+</svg>
+
+    <span class="sr-only">Open actions menu</span>
+  </button>
+</div>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggleBtn = document.getElementById("speed-dial-button");
+    const menu = document.getElementById("speed-dial-menu-click");
+
+    const iconLine1 = document.getElementById("line-1");
+    const iconLine2 = document.getElementById("line-2");
+
+
+    let open = false;
+
+    toggleBtn.addEventListener("click", () => {
+      open = !open;
+
+      if (open) {
+        menu.classList.remove("opacity-0", "scale-90", "pointer-events-none", "translate-y-5");
+        menu.classList.add("opacity-100", "scale-100", "pointer-events-auto", "-translate-y-0");
+
+        iconLine1.setAttribute("d", "M3 3L15 15");
+        iconLine2.setAttribute("d", "M15 3L3 15");
+      } else {
+        menu.classList.remove("opacity-100", "scale-100", "pointer-events-auto", "-translate-y-0");
+        menu.classList.add("opacity-0", "scale-90", "pointer-events-none", "translate-y-5");
+
+        iconLine1.setAttribute("d", "M9 1v16");
+        iconLine2.setAttribute("d", "M1 9h16");
+      }
+    });
+  });
+</script>
+
