@@ -55,7 +55,7 @@
         <li class="flex items-center gap-1 md:hover:text-green-400 text-white">
           <iconify-icon icon="mdi:about" class="text-xsl"></iconify-icon>
           <a
-            href="#"
+            href="#about"
             class="block py-2 px-3 text-gray-900 text-sm rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:text-white md:dark:hover:text-green-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
             >Sobre Nosotros</a
           >
@@ -63,7 +63,7 @@
         <li class="flex items-center gap-1 md:hover:text-green-400 text-white">
           <iconify-icon icon="mdi:cart" class="text-sl"></iconify-icon>
           <a
-            href="#"
+            href="#productos"
             class="block py-2 px-3 text-sm text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:text-white md:dark:hover:text-green-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
             >Productos</a
           >
@@ -71,7 +71,7 @@
         <li class="flex items-center gap-1 md:hover:text-green-400 text-white">
           <iconify-icon icon="mdi:contact" class="text-sl"></iconify-icon>
           <a
-            href="#"
+            href="#contact"
             class="block py-2 px-3 text-sm text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:text-white md:dark:hover:text-green-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
             >Contacto</a
           >
@@ -83,6 +83,7 @@
 
 <script is:inline>
   document.addEventListener("DOMContentLoaded", () => {
+    const links = document.querySelectorAll("a[href^='#']");
     const menu = document.getElementById("navbar-default");
     const button = document.querySelector(
       '[data-collapse-toggle="navbar-default"]'
@@ -112,6 +113,45 @@
       } else {
         updateMenuState();
       }
+    });
+
+    links.forEach(link => {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        const targetId = this.getAttribute("href").substring(1);
+        const targetElement = document.getElementById(targetId);
+
+        if (targetElement) {
+          // Lógica personalizada para scroll lento
+          const startPosition = window.scrollY;
+          const targetPosition = targetElement.getBoundingClientRect().top + startPosition;
+          const distance = targetPosition - startPosition;
+          const duration = 1000; // Duración en milisegundos (1 segundo)
+          let startTime = null;
+
+          function ease(t) {
+            // Función de easing (easeInOutCubic)
+            return t < 0.5
+              ? 4 * t * t * t
+              : 1 - Math.pow(-2 * t + 2, 3) / 2;
+          }
+
+          function animation(currentTime) {
+            if (!startTime) startTime = currentTime;
+            const timeElapsed = currentTime - startTime;
+            const run = ease(timeElapsed / duration) * distance + startPosition;
+            window.scrollTo(0, run);
+            if (timeElapsed < duration) {
+              requestAnimationFrame(animation);
+            } else {
+              window.scrollTo(0, targetPosition); // Asegura llegar al destino exacto
+            }
+          }
+
+          requestAnimationFrame(animation);
+        }
+      });
     });
   });
 </script>

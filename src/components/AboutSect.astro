@@ -6,11 +6,11 @@ import Particles from "@/components/animations/Particles";
 ---
 
 <section
-  class="h-screen flex flex-col justify-center items-center md:mt-16"
+  class="h-screen flex flex-col justify-center items-center md:mt-16" id="about"
 >
 <div style={{ width: "100%", height: "100%", position: "absolute" }}>
     <Particles
-      client:load
+      client:idle
       particleColors={["#ffffff", "#ffffff"]}
       particleCount={200}
       particleSpread={10}
@@ -26,7 +26,7 @@ import Particles from "@/components/animations/Particles";
   </h1>
   <div class="flex flex-col md:flex-row justify-between">
     <div class="md:w1/2 flex justify-center items-center">
-      <Image class="w-[50%] md:w-[60%] 2xl:w-[70%]" src={logo} alt="Logo" />
+      <Image class="w-[50%] md:w-[60%] 2xl:w-[70%] z-20" src={logo} alt="Logo" />
     </div>
     <h1 class="text-white text-3xl md:text-6xl font-semibold mb-10 text-center md:hidden">
     Sobre Nosotros

@@ -47,3 +47,7 @@
   transform: rotate(-45deg);
   transform-origin: 4px 19px;
 }
+
+html {
+  scroll-behavior: smooth;
+}

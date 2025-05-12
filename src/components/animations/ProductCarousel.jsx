@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 
 /**
- * @typedef {{ image: string; title: string; link: string }} Product
+ * @typedef {{ image: string; title: string;}} Product
  * @param {{ products: Product[] }} props
  */
 const ProductCarousel = ({ products }) => {
