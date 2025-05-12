@@ -90,7 +90,7 @@ const ProductCarousel = ({ products }) => {
         {products.map((product, i) => (
           <div
             key={i}
-            className="w-[300px] flex-shrink-0 bg-white rounded-lg shadow p-4 h-auto pb-6 scrollSnapAlign"
+            className="w-[350px] flex-shrink-0 bg-[#F8F8F8] shadow p-3 h-auto pb-6 scrollSnapAlign"
             style={{ scrollSnapAlign: "center" }}
           >
             <img
@@ -107,7 +107,7 @@ const ProductCarousel = ({ products }) => {
                 Material inoxidable 304
               </small>
             </div>
-            <div className="text-white bg-[#25D366] p-2 px-4 rounded-xl hover:brightness-75 transition w-fit flex items-center gap-2">
+            <div className="text-white bg-[#25D366] shadow-xl shadow-[#262626]/20 p-2 px-4 rounded-xl hover:brightness-75 transition w-fit flex items-center gap-2">
               <iconify-icon
                 icon="ic:round-whatsapp"
                 class="text-xl"

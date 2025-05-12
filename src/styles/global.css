@@ -29,3 +29,21 @@
     font-style: normal;
     src: url('/fonts/poppins-bold.woff2') format('woff2');
 }
+
+.line {
+  transition: all 0.3s ease;
+}
+
+.menu-open .line.top {
+  transform: rotate(45deg);
+  transform-origin: 4px 5px;
+}
+
+.menu-open .line.middle {
+  opacity: 0;
+}
+
+.menu-open .line.bottom {
+  transform: rotate(-45deg);
+  transform-origin: 4px 19px;
+}
