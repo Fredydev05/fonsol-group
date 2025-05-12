@@ -10,7 +10,7 @@ export default defineConfig({
     plugins: [tailwindcss()],
     resolve: {
       alias: {
-        "@": path.resolve("./src"), // ✅ Esto está bien ubicado
+        "@": path.resolve("./src"), 
       },
     },
   },
