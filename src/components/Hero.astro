@@ -9,7 +9,7 @@ import SplitText from "@/components/animations/SplitText";
   <div
     class="flex flex-col justify-center md:w-1/2 ml-8 mr-8 md:mr-0 mb-4 md:mb-12 my-8"
   >
-  <h2 class="text-lg md:text-3xl mb-14 font-semibold text-emerald-400">Bienvenido a Fonsol Group</h2>
+  <h2 class="text-lg md:text-3xl mb-14 font-semibold text-emerald-400 animate-fade-in-up animate-delay-400">Bienvenido a Fonsol Group</h2>
     <!-- <div class="flex flex-col justify-center md:w-1/2 ml-8 mr-8 md:mr-0">
       <TextPressure
         client:load
@@ -33,7 +33,7 @@ import SplitText from "@/components/animations/SplitText";
       client:load
       text="Elegancia y resistencia en tu Cocina!"
       className="text-4xl md:text-6xl xl:text-7xl font-semibold text-gray-800 dark:text-white"
-      delay={60}
+      delay={40}
       animationFrom={{ opacity: 0, transform: "translate3d(0,50px,0)" }}
       animationTo={{ opacity: 1, transform: "translate3d(0,0,0)" }}
       easing="easeOutCubic"
@@ -44,7 +44,7 @@ import SplitText from "@/components/animations/SplitText";
       Contamos con envios a todo el pais
     </p>
     <div
-      class="mt-6 px-4 md:px-6 py-3 text-sm max-w-fit text-white bg-emerald-500 rounded-md hover:bg-emerald-700 transition justify-center items-center flex gap-1"
+      class="mt-6 px-4 md:px-6 py-3 text-sm max-w-fit text-white bg-emerald-500 rounded-md hover:bg-emerald-700 transition justify-center items-center flex gap-1 animate-fade-in-right animate-delay-400"
     >
       <a href="#productos"> Ver Productos </a>
       <iconify-icon icon="mingcute:down-line" class="text-white text-xl"
@@ -52,7 +52,7 @@ import SplitText from "@/components/animations/SplitText";
     </div>
   </div>
 
-  <div class="md:h-screen flex justify-center 2xl:w-1/2">
+  <div class="md:h-screen flex justify-center 2xl:w-1/2 animate-fade-in animate-delay-500">
     <Image
       src={momentaneo}
       alt="Hero Image"

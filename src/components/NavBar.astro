@@ -15,27 +15,29 @@
     <button
       data-collapse-toggle="navbar-default"
       type="button"
-      class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+      class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100  dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
       aria-controls="navbar-default"
       aria-expanded="false"
     >
       <span class="sr-only">Open main menu</span>
       <svg
-        class="w-5 h-5"
-        aria-hidden="true"
-        xmlns="http://www.w3.org/2000/svg"
+        class="w-6 h-6 transition-all duration-300 transform"
+        viewBox="0 0 24 24"
         fill="none"
-        viewBox="0 0 17 14"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
       >
-        <path
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M1 1h15M1 7h15M1 13h15"></path>
+        <line x1="3" y1="6" x2="21" y2="6" class="line top"></line>
+        <line x1="3" y1="12" x2="21" y2="12" class="line middle"></line>
+        <line x1="3" y1="18" x2="21" y2="18" class="line bottom"></line>
       </svg>
     </button>
-    <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+    <div
+      id="navbar-default"
+      class="w-full md:block md:w-auto overflow-hidden transition-[max-height] duration-500 ease-in-out md:max-h-none max-h-0"
+    >
       <ul
         class="font-medium flex flex-col p-4 md:p-0 mt-4 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 transition"
       >
@@ -51,8 +53,7 @@
           >
         </li>
         <li class="flex items-center gap-1 md:hover:text-green-400 text-white">
-          <iconify-icon icon="mdi:about" class="text-xsl"
-          ></iconify-icon>
+          <iconify-icon icon="mdi:about" class="text-xsl"></iconify-icon>
           <a
             href="#"
             class="block py-2 px-3 text-gray-900 text-sm rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:text-white md:dark:hover:text-green-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
@@ -60,17 +61,15 @@
           >
         </li>
         <li class="flex items-center gap-1 md:hover:text-green-400 text-white">
-          <iconify-icon icon="mdi:cart" class="text-sl"
-          ></iconify-icon>
+          <iconify-icon icon="mdi:cart" class="text-sl"></iconify-icon>
           <a
             href="#"
-            class="block py-2 px-3 text-sm text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0  md:p-0 dark:text-white md:dark:hover:text-green-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+            class="block py-2 px-3 text-sm text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:text-white md:dark:hover:text-green-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
             >Productos</a
           >
         </li>
         <li class="flex items-center gap-1 md:hover:text-green-400 text-white">
-          <iconify-icon icon="mdi:contact" class="text-sl"
-          ></iconify-icon>
+          <iconify-icon icon="mdi:contact" class="text-sl"></iconify-icon>
           <a
             href="#"
             class="block py-2 px-3 text-sm text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:text-white md:dark:hover:text-green-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
@@ -81,3 +80,38 @@
     </div>
   </div>
 </nav>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const menu = document.getElementById("navbar-default");
+    const button = document.querySelector(
+      '[data-collapse-toggle="navbar-default"]'
+    );
+    const icon = button.querySelector("svg");
+
+    const updateMenuState = () => {
+      const expanded = button.getAttribute("aria-expanded") === "true";
+      if (expanded) {
+        menu.style.maxHeight = `${menu.scrollHeight}px`;
+        icon.classList.add("menu-open");
+      } else {
+        menu.style.maxHeight = "0px";
+        icon.classList.remove("menu-open");
+      }
+    };
+
+    const observer = new MutationObserver(updateMenuState);
+    observer.observe(button, {
+      attributes: true,
+      attributeFilter: ["aria-expanded"],
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth >= 768) {
+        menu.style.maxHeight = null;
+      } else {
+        updateMenuState();
+      }
+    });
+  });
+</script>
