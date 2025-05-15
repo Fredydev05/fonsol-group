@@ -4,8 +4,8 @@ const LightweightBackground = () => {
       <svg className="w-full h-full" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
         <defs>
           <linearGradient id="gradient" x1="0" x2="1" y1="0" y2="1">
-            <stop offset="0%" stopColor="#ffffff" stopOpacity="0.45" />
-            <stop offset="100%" stopColor="#ffffff" stopOpacity="0.05" />
+            <stop offset="0%" stopColor="#ffffff" stopOpacity="0.3" />
+            <stop offset="100%" stopColor="#ffffff" stopOpacity="0.03" />
           </linearGradient>
         </defs>
         {[...Array(20)].map((_, i) => (
