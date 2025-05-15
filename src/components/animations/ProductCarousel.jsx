@@ -10,7 +10,7 @@ const ProductCarousel = ({ products }) => {
   const pauseTimeoutRef = useRef(null);
   const scrollEndTimeoutRef = useRef(null);
 
-  const itemWidth = 316; // 300px width + 16px gap
+  const itemWidth = 366; 
 
   // Recentrar la card más cercana al centro
   const snapToNearest = () => {
