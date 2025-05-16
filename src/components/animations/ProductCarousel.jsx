@@ -107,13 +107,15 @@ const ProductCarousel = ({ products }) => {
                 Material inoxidable 304
               </small>
             </div>
-            <div className="text-white bg-[#25D366] shadow-xl shadow-[#262626]/20 p-2 px-4 rounded-xl hover:brightness-75 transition w-fit flex items-center gap-2">
+            <a
+              href={`https://wa.me/595984955125?text=Hola!%20me%20interesaria%20cotizar%20el%20${encodeURIComponent(product.title)}`} target="_blank" 
+              className="text-white bg-[#25D366] shadow-xl shadow-[#262626]/20 p-2 px-4 rounded-xl hover:brightness-75 transition w-fit flex items-center gap-2">
               <iconify-icon
                 icon="ic:round-whatsapp"
                 class="text-xl"
               ></iconify-icon>
-              <a href={`https://wa.me/595984439436?text=Hola!%20me%20interesaria%20cotizar%20el%20${encodeURIComponent(product.title)}`} target="_blank">Cotizar</a>
-            </div>
+              <a >Cotizar</a>
+            </a>
           </div>
         ))}
       </div>
