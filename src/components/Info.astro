@@ -1,6 +1,8 @@
 ---
 import Image from "astro/components/Image.astro";
-import momentaneo from "public/momentaneo.png";
+import producto1 from "public/products/producto1.webp";
+import producto2 from "public/products/producto2.webp";
+import producto3 from "public/products/producto3.webp";
 import BlurText from "@/components/animations/BlurText";
 import Threads from "@/components/animations/Threads";
 ---
@@ -39,12 +41,12 @@ import Threads from "@/components/animations/Threads";
       <div class="flex gap-4 mb-8 ml-8">
         <Image
           class="size-56 md:size-64 object-cover z-20"
-          src={momentaneo}
+          src={producto1}
           alt="height image"
         />
         <Image
-          class="w-[154px] h-[185px] md:h-[205px] mt-auto object-cover z-20"
-          src={momentaneo}
+          class="w-[210px] h-[190px] md:h-[205px] mt-auto object-cover z-20"
+          src={producto2}
           alt="low image"
         />
       </div>
@@ -53,7 +55,7 @@ import Threads from "@/components/animations/Threads";
       >
         <Image
           class="w-[244px] h-[176px] md:h-[186px] object-cover z-20"
-          src={momentaneo}
+          src={producto3}
           alt="bottom image"
         />
       </div>
