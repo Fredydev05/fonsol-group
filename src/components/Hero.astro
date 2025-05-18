@@ -4,31 +4,12 @@ import momentaneo from "public/momentaneo.png";
 import SplitText from "@/components/animations/SplitText";
 ---
 <section
-  class=" flex flex-col items-center justify-between w-full md:min-h-screen md:flex-row py-8 md:py-0 gap-8 mask-b-from-70% mask-b-to-95% 2xl:w-[90%] 2xl:mx-auto"
+  class=" flex flex-col items-center justify-between w-full md:min-h-screen md:flex-row py-8 md:py-0 gap-8 2xl:w-[90%] 2xl:mx-auto"
 >
   <div
     class="flex flex-col justify-center md:w-1/2 ml-8 mr-8 md:mr-0 mb-4 md:mb-12 my-8"
   >
   <h2 class="welcome-text relative w-fit text-lg md:text-3xl mb-14 font-semibold text-[var(--color-primary)] animate-fade-in-up animate-delay-400">Bienvenido a Fonsol Group</h2>
-    <!-- <div class="flex flex-col justify-center md:w-1/2 ml-8 mr-8 md:mr-0">
-      <TextPressure
-        client:load
-        text="Bienvenido"
-        fontFamily="Compressa VF"
-        fontUrl="https://res.cloudinary.com/dr6lvwubh/raw/upload/v1529908256/CompressaPRO-GX.woff2"
-        width={true}
-        weight={true}
-        italic={true}
-        alpha={false}
-        flex={true}
-        stroke={true}
-        scale={false}
-        textColor="#ffffff"
-        strokeColor="#226f2c"
-        className="custom-text"
-        minFontSize={20}
-      />
-    </div> -->
     <SplitText
       client:idle
       text="Elegancia y resistencia en tu Cocina!"
@@ -53,11 +34,11 @@ import SplitText from "@/components/animations/SplitText";
   </a>
   </div>
 
-  <div class="md:h-screen flex justify-center 2xl:w-1/2 animate-fade-in animate-delay-500">
+  <div class="md:h-full 2xl:w-1/2 animate-fade-in animate-delay-500 ">
     <Image
       src={momentaneo}
       alt="Hero Image"
-      class="object-cover"
+      class="md:h-screen object-cover mask-b-from-70% mask-b-to-95%"
     />
   </div>
 </section>
