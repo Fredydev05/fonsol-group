@@ -104,7 +104,7 @@ const ProductCarousel = ({ products }) => {
                 {product.title}
               </h3>
               <small className="text-[#606060] text-sm">
-                Material inoxidable 304
+                {product.small}
               </small>
             </div>
             <a
@@ -114,7 +114,7 @@ const ProductCarousel = ({ products }) => {
                 icon="ic:round-whatsapp"
                 class="text-xl"
               ></iconify-icon>
-              <a >Cotizar</a>
+              <span>Cotizar</span>
             </a>
           </div>
         ))}
