@@ -1,13 +1,13 @@
 ---
 import Image from "astro/components/Image.astro";
-import momentaneo from "public/momentaneo.png";
+import heroimage from "public/products/prod16.webp";
 import SplitText from "@/components/animations/SplitText";
 ---
 <section
   class=" flex flex-col items-center justify-between w-full md:min-h-screen md:flex-row py-8 md:py-0 gap-8 2xl:w-[90%] 2xl:mx-auto"
 >
   <div
-    class="flex flex-col justify-center md:w-1/2 ml-8 mr-8 md:mr-0 mb-4 md:mb-12 my-8"
+    class="flex flex-col justify-center md:w-1/2 ml-8 mr-8 md:mr-0 mb-4 md:mb-12 "
   >
   <h2 class="welcome-text relative w-fit text-lg md:text-3xl mb-14 font-semibold text-[var(--color-primary)] animate-fade-in-up animate-delay-400">Bienvenido a Fonsol Group</h2>
     <SplitText
@@ -21,12 +21,12 @@ import SplitText from "@/components/animations/SplitText";
       threshold={0.2}
       rootMargin="-50px"
     />
-    <p class="text-black text-sm mt-4 md:text-xl">
+    <p class="text-white text-sm mt-4 md:text-lg animate-fade-in-right animate-delay-400">
       Contamos con envios a todo el pais
     </p>
     <a
       href="#productos"
-      class="mt-6 px-4 md:px-6 py-3 text-sm max-w-fit text-white bg-[var(--color-primary)] rounded-md hover:bg-emerald-700 transition justify-center items-center flex gap-1 animate-fade-in-right animate-delay-400"
+      class="mt-4 px-4 md:px-6 py-3 text-sm max-w-fit text-white bg-[var(--color-secondary)] rounded-md hover:bg-emerald-700 transition justify-center items-center flex gap-1 animate-fade-in-right animate-delay-400"
     >
       <span> Ver Productos </span>
       <iconify-icon icon="mingcute:down-line" class="text-white text-xl"
@@ -34,9 +34,9 @@ import SplitText from "@/components/animations/SplitText";
   </a>
   </div>
 
-  <div class="md:h-full 2xl:w-1/2 animate-fade-in animate-delay-500 ">
+  <div class="md:h-full md:w-1/2 animate-fade-in animate-delay-500 ">
     <Image
-      src={momentaneo}
+      src={heroimage}
       alt="Hero Image"
       class="md:h-screen object-cover mask-b-from-70% mask-b-to-95%"
     />
