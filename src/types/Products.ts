@@ -43,6 +43,15 @@ export const products: Products = [
     inStock: true
   },
   {
+    image: "/products/prod15.webp",
+    title: "Bacha - Undermount",
+    material: "Material inoxidable 304",
+    dimension: "Dimensiones: 68cm x 45cm",
+    profundity: "Profundidad: Aproximadamente 23cm",
+    accessories: "Accesorios Incluidos: Bandeja de Drenaje y Válvulas",
+    inStock: true
+  },
+  {
     image: "/products/prod4.webp",
     title: "Bacha - With Edge",
     material: "Material inoxidable 304",
@@ -123,15 +132,6 @@ export const products: Products = [
     title: "Bacha - Double Flat",
     material: "Material inoxidable 304",
     dimension: "Dimensiones: 82cm x 45cm",
-    profundity: "Profundidad: Aproximadamente 23cm",
-    accessories: "Accesorios Incluidos: Bandeja de Drenaje y Válvulas",
-    inStock: true
-  },
-  {
-    image: "/products/prod15.webp",
-    title: "Bacha - Undermount",
-    material: "Material inoxidable 304",
-    dimension: "Dimensiones: 68cm x 45cm",
     profundity: "Profundidad: Aproximadamente 23cm",
     accessories: "Accesorios Incluidos: Bandeja de Drenaje y Válvulas",
     inStock: true
