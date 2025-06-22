@@ -33,15 +33,7 @@ export const products: Products = [
     accessories: "Accesorios Incluidos: Tabla de Picar, Bandeja Lavadora, Bandeja Escurridora y Válvulas",
     inStock: true
   },
-  {
-    image: "/products/prod3.webp",
-    title: "Bacha - Whit Edge",
-    material: "Material inoxidable 304",
-    dimension: "Dimensiones: 68cm x 45cm",
-    profundity: "Profundidad: Aproximadamente 23cm",
-    accessories: "Accesorios Incluidos: Bandeja de Drenaje y Válvulas",
-    inStock: true
-  },
+  
   {
     image: "/products/prod5.webp",
     title: "Bacha Semi Inteligente - Feiyu",
@@ -50,6 +42,15 @@ export const products: Products = [
     profundity: "Profundidad: Aproximadamente 23cm",
     capacity: "Capacidad Volumétrica: 35 Lts",
     accessories: "Accesorios Incluidos: Tabla de Picar, Bandeja Lavadora, Bandeja Escurridora y Válvulas",
+    inStock: true
+  },
+  {
+    image: "/products/prod3.webp",
+    title: "Bacha - Whit Edge",
+    material: "Material inoxidable 304",
+    dimension: "Dimensiones: 68cm x 45cm",
+    profundity: "Profundidad: Aproximadamente 23cm",
+    accessories: "Accesorios Incluidos: Bandeja de Drenaje y Válvulas",
     inStock: true
   },
   {
