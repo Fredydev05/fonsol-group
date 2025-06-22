@@ -1,3 +1,4 @@
+import { hr } from "framer-motion/client";
 import { useEffect, useRef } from "react";
 
 /**
@@ -41,7 +42,7 @@ const ProductCarousel = ({ products }) => {
       } else {
         el.scrollBy({ left: scrollStep, behavior: "smooth" });
       }
-    }, 3000);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, []);
@@ -102,20 +103,28 @@ const ProductCarousel = ({ products }) => {
               draggable={false}
               src={product.image}
               alt={product.title}
-              className="w-full h-[300px] object-cover"
+              className="w-full h-[260px] object-cover"
             />
             <div className="mb-6 mt-4">
               <h3 className="text-xl font-semibold text-[#262626]">
                 {product.title}
               </h3>
-              <small className="text-[#606060] text-sm">{product.small}</small>
+              <hr className="my-2 mx-4 border-[#262626]/20" />
+              <div className="flex flex-col gap-1">
+                <small className="text-[#606060] text-sm">{product.material}</small>
+                <small className="text-[#606060] text-sm">{product.dimension}</small>
+                <small className="text-[#606060] text-sm">{product.profundity}</small>
+                <small className="text-[#606060] text-sm">{product.capacity}</small>
+                <small className="text-[#606060] text-sm">{product.accessories}</small>
+              </div>
             </div>
-            <a
+            <div className="flex flex-col justify-between gap-4">
+              <a
               href={`https://wa.me/595984955125?text=Hola!%20me%20interesaria%20cotizar%20el%20${encodeURIComponent(
                 product.title
               )}`}
               target="_blank"
-              className="text-white bg-[#25D366] shadow-xl shadow-[#262626]/20 p-2 px-4 rounded-xl hover:brightness-75 transition w-fit flex items-center gap-2"
+              className="text-white bg-[#25D366] shadow-xl shadow-[#262626]/20 p-2 px-4 rounded-xl hover:brightness-75 transition w-fit flex gap-2"
             >
               <iconify-icon
                 icon="ic:round-whatsapp"
@@ -123,6 +132,8 @@ const ProductCarousel = ({ products }) => {
               ></iconify-icon>
               <span>Cotizar</span>
             </a>
+            </div>
+            
           </div>
         ))}
       </div>
