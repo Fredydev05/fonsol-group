@@ -4,7 +4,7 @@ import { products } from "@/types/Products";
 ---
 
 <section
-  class="bg-[url(/image1.png)] bg-center bg-cover relative w-full h-[820px] flex flex-col items-center justify-center overflow-hidden 2xl:min-w-screen mask-y-from-90% mask-y-to-100%"
+  class="bg-[url(/image1.png)] bg-center bg-cover relative w-full h-[920px] flex flex-col items-center justify-center overflow-hidden 2xl:min-w-screen mask-y-from-90% mask-y-to-100%"
   id="productos"
 >
   
@@ -12,4 +12,11 @@ import { products } from "@/types/Products";
     Nuestros productos
   </h1>
   <ProductCarousel client:only="react" products={products} />
+  <!-- <div class="my-8">
+    <a href="/Integrales.pdf" download class="bg-red-900 p-3 rounded-xl flex justify-center items-center gap-2 hover:bg-red-800 transition">
+      <iconify-icon icon="material-icon-theme:pdf" class="text-2xl md:text-4xl"></iconify-icon>
+      <span class="text-white text-sm md:text-xl ">Descargar Catálogo</span>
+      <iconify-icon icon="line-md:download" class="text-2xl md:text-3xl text-white"></iconify-icon>
+    </a>
+  </div> -->
 </section>
