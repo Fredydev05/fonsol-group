@@ -1,4 +1,3 @@
-import { hr } from "framer-motion/client";
 import { useEffect, useRef } from "react";
 
 /**
@@ -42,7 +41,7 @@ const ProductCarousel = ({ products }) => {
       } else {
         el.scrollBy({ left: scrollStep, behavior: "smooth" });
       }
-    }, 5000);
+    }, 7000);
 
     return () => clearInterval(interval);
   }, []);
@@ -91,7 +90,7 @@ const ProductCarousel = ({ products }) => {
         {products.map((product, i) => (
           <div
             key={i}
-            className="w-[350px] flex-shrink-0 bg-[#F8F8F8] shadow p-3 h-auto pb-6 scrollSnapAlign overflow-hidden"
+            className="w-[350px] flex-shrink-0 bg-[#F8F8F8] shadow p-3 h-auto pb-6 scrollSnapAlign overflow-hidden justify-between flex flex-col gap-4"
             style={{ scrollSnapAlign: "center" }}
           >
             {!product.inStock && (
@@ -103,37 +102,49 @@ const ProductCarousel = ({ products }) => {
               draggable={false}
               src={product.image}
               alt={product.title}
-              className="w-full h-[260px] object-cover"
+              className="w-full h-[290px] object-cover align-center"
             />
-            <div className="mb-6 mt-4">
+            <div className="mb-6 mt-2">
               <h3 className="text-xl font-semibold text-[#262626]">
                 {product.title}
               </h3>
               <hr className="my-2 mx-4 border-[#262626]/20" />
               <div className="flex flex-col gap-1">
-                <small className="text-[#606060] text-sm">{product.material}</small>
-                <small className="text-[#606060] text-sm">{product.dimension}</small>
-                <small className="text-[#606060] text-sm">{product.profundity}</small>
-                <small className="text-[#606060] text-sm">{product.capacity}</small>
-                <small className="text-[#606060] text-sm">{product.accessories}</small>
+                <small className="text-[#606060] text-sm">
+                  {product.material}
+                </small>
+                <small className="text-[#606060] text-sm">
+                  {product.dimension}
+                </small>
+                <small className="text-[#606060] text-sm">
+                  {product.profundity}
+                </small>
+                <small className="text-[#606060] text-sm">
+                  {product.capacity}
+                </small>
+                <small className="text-[#606060] text-sm">
+                  {product.accessories}
+                </small>
+                {!product.capacity && (
+                  <small className="text-white text-sm">""</small>
+                )}
               </div>
             </div>
             <div className="flex flex-col justify-between gap-4">
               <a
-              href={`https://wa.me/595984955125?text=Hola!%20me%20interesaria%20cotizar%20el%20${encodeURIComponent(
-                product.title
-              )}`}
-              target="_blank"
-              className="text-white bg-[#25D366] shadow-xl shadow-[#262626]/20 p-2 px-4 rounded-xl hover:brightness-75 transition w-fit flex gap-2"
-            >
-              <iconify-icon
-                icon="ic:round-whatsapp"
-                class="text-xl"
-              ></iconify-icon>
-              <span>Cotizar</span>
-            </a>
+                href={`https://wa.me/595984955125?text=Hola!%20me%20interesaria%20cotizar%20la%20${encodeURIComponent(
+                  product.title
+                )}`}
+                target="_blank"
+                className="text-white bg-[#25D366] shadow-xl shadow-[#262626]/20 p-2 px-4 rounded-xl hover:brightness-75 transition w-fit flex gap-2"
+              >
+                <iconify-icon
+                  icon="ic:round-whatsapp"
+                  class="text-xl"
+                ></iconify-icon>
+                <span>Cotizar</span>
+              </a>
             </div>
-            
           </div>
         ))}
       </div>

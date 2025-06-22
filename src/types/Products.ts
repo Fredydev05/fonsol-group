@@ -50,19 +50,26 @@ export const products: Products = [
     profundity: "Profundidad: Aproximadamente 23cm",
     accessories: "Accesorios Incluidos: Bandeja de Drenaje y Válvulas",
     inStock: true
-  },/*
+  },
   {
     image: "/products/prod5.webp",
-    title: "Otro producto",
-    material: "Material prueba 123",
+    title: "Bacha Semi Inteligente - Feiyu",
+    material: "Material inoxidable 304",
+    dimension: "Dimensiones: 75cm x 45cm",
+    profundity: "Profundidad: Aproximadamente 23cm",
+    capacity: "Capacidad Volumétrica: 35 Lts",
+    accessories: "Accesorios Incluidos: Tabla de Picar, Bandeja Lavadora, Bandeja Escurridora y Válvulas",
     inStock: true
   },
   {
     image: "/products/prod6.webp",
-    title: "Otro producto",
-    material: "Material prueba 123",
+    title: "Bacha - Undermount",
+    material: "Material inoxidable 304",
+    dimension: "Dimensiones: 60cm x 45cm",
+    profundity: "Profundidad: Aproximadamente 23cm",
+    accessories: "Accesorios Incluidos: Bandeja de Drenaje y Válvulas",
     inStock: true
-  },*/
+  },
   {
     image: "/products/prod7.webp",
     title: "Bacha - Undermount",
@@ -71,13 +78,16 @@ export const products: Products = [
     profundity: "Profundidad: Aproximadamente 23cm",
     accessories: "Accesorios Incluidos: Bandeja de Drenaje y Válvulas",
     inStock: true
-  },/*
+  },
   {
     image: "/products/prod8.webp",
-    title: "Otro producto",
-    material: "Material prueba 123",
+    title: "Bacha - Double Flat",
+    material: "Material inoxidable 304",
+    dimension: "Dimensiones: 82cm x 45cm",
+    profundity: "Profundidad: Aproximadamente 23cm",
+    accessories: "Accesorios Incluidos: Bandeja de Drenaje y Válvulas",
     inStock: true
-  },
+  },/*
   {
     image: "/products/prod9.webp",
     title: "Otro producto",
@@ -116,12 +126,15 @@ export const products: Products = [
     profundity: "Profundidad: Aproximadamente 23cm",
     accessories: "Accesorios Incluidos: Bandeja de Drenaje y Válvulas",
     inStock: true
-  },/*
+  },
   {
     image: "/products/prod15.webp",
-    title: "Otro producto",
-    material: "Material prueba 123",
+    title: "Bacha - Undermount",
+    material: "Material inoxidable 304",
+    dimension: "Dimensiones: 68cm x 45cm",
+    profundity: "Profundidad: Aproximadamente 23cm",
+    accessories: "Accesorios Incluidos: Bandeja de Drenaje y Válvulas",
     inStock: true
-  }*/
+  }
 
 ];
