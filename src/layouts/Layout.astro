@@ -11,31 +11,31 @@ import SocialsButtom from "@/components/SocialsButtom.astro";
     <title>Fonsol Group - Bachas de Cocina</title>
     <meta
       name="description"
-      content="Bachas de cocina de acero inoxidable y de cerámica"
+      content="Bachas de cocina de acero inoxidable"
     />
     <meta
-      name="og:title"
+      property="og:title"
       content="Fonsol Group - Bachas de Cocina de Acero Inoxidable"
     />
     <meta
-      name="og:description"
+      property="og:description"
       content="Descubre nuestras bachas de cocina de acero inoxidable, diseñadas para combinar funcionalidad y estilo en tu hogar."
     />
-    <meta
-      name="og:image"
-      content="https://fonsol-group.netlify.app/img/logoFONSOL.png"
-    />
+    <meta property="og:image" content="/public/img/logoFONSOL.png" />
     <meta
       name="keywords"
       content="fonsol, bachas, cocina, acero inoxidable, diseño, funcionalidad, hogar, productos de cocina, accesorios de cocina, bachas de cocina, bachas de acero, bachas de cerámica, bachas modernas, bachas elegantes, bachas funcionales, accesorios de cocina modernos, accesorios de cocina elegantes"
     />
+    <meta name="robots" content="index, follow"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://fonsolgroup.com.py"/>
     <meta name="author" content="Fonsol Group"/>
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="icon" type="image/svg+xml" href="/img/logoFONSOL.png" />
   </head>
-  <body  class="scroll-smooth">
+  <body class="scroll-smooth">
     <NavBar />
-      <slot />
+    <slot />
     <SocialsButtom />
     <Footer />
 
