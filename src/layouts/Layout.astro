@@ -9,10 +9,7 @@ import SocialsButtom from "@/components/SocialsButtom.astro";
   <head>
     <meta charset="UTF-8" />
     <title>Fonsol Group - Bachas de Cocina</title>
-    <meta
-      name="description"
-      content="Bachas de cocina de acero inoxidable"
-    />
+    <meta name="description" content="Bachas de cocina de acero inoxidable" />
     <meta
       property="og:title"
       content="Fonsol Group - Bachas de Cocina de Acero Inoxidable"
@@ -26,14 +23,37 @@ import SocialsButtom from "@/components/SocialsButtom.astro";
       name="keywords"
       content="fonsol, bachas, cocina, acero inoxidable, diseño, funcionalidad, hogar, productos de cocina, accesorios de cocina, bachas de cocina, bachas de acero, bachas de cerámica, bachas modernas, bachas elegantes, bachas funcionales, accesorios de cocina modernos, accesorios de cocina elegantes"
     />
-    <meta name="robots" content="index, follow"/>
-    <meta property="og:type" content="website"/>
-    <meta property="og:url" content="https://fonsolgroup.com.py"/>
-    <meta name="author" content="Fonsol Group"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://fonsolgroup.com.py" />
+    <meta name="author" content="Fonsol Group" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/img/logoFONSOL.png" />
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-TB89RXHV");
+    </script>
+    <!-- End Google Tag Manager -->
   </head>
   <body class="scroll-smooth">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-TB89RXHV"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <NavBar />
     <slot />
     <SocialsButtom />
